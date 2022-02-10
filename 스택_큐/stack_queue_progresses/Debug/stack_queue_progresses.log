@@ -1,0 +1,4 @@
+﻿  progresses1.cpp
+c:\users\user\desktop\서울과학기술대학교\algorithm_study\스택_큐\stack_queue_progresses\progresses1.cpp(13): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\user\desktop\서울과학기술대학교\algorithm_study\스택_큐\stack_queue_progresses\progresses1.cpp(62): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  stack_queue_progresses.vcxproj -> C:\Users\User\Desktop\서울과학기술대학교\algorithm_study\스택_큐\stack_queue_progresses\Debug\stack_queue_progresses.exe
