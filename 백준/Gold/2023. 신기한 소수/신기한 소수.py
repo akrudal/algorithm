@@ -1,8 +1,7 @@
 N = int(input())
 
-maxNumber = int("9" * N)
-primeNumbers = [2,3,5,7]
-originalPrimeNumbers = [1, 3, 7, 9]
+primeNumbers = [2, 3, 5, 7]
+lastNumbers = [1, 3, 7, 9]
 
 
 # 1의 자리 수 조기 리턴
@@ -17,11 +16,12 @@ def isPrime(num):
             return False
     return True
 
+# 끝자리수가 1,3,7,9로 끝나는 체크리스트를 만든다.
 def makeCheckList():
     checkList = []
     for primeNumber in primeNumbers:
-        for originalPrimeNumber in originalPrimeNumbers:
-            temp = primeNumber * 10 + originalPrimeNumber
+        for lastNumber in lastNumbers:
+            temp = primeNumber * 10 + lastNumber
             checkList.append(temp)
     return checkList
 
