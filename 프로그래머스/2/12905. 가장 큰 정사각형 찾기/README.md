@@ -1,10 +1,10 @@
 # [level 2] 가장 큰 정사각형 찾기 - 12905 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12905) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12905?language=swift) 
 
 ### 성능 요약
 
-메모리: 30.8 MB, 시간: 518.39 ms
+메모리: 63 MB, 시간: 136.44 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 04월 15일 19:28:40
+2024년 04월 15일 19:32:11
 
 ### 문제 설명
 
