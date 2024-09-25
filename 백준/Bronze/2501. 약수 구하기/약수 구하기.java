@@ -19,13 +19,14 @@ public class Main {
         for (int i = 1; i <= N; i++) {
             if (N % i == 0) {
                 divisors.add(i);
+                
+                if (divisors.size() >= K) {
+                    System.out.println(divisors.get(K - 1));
+                    return;
+                } 
             }
         }
         
-        if (divisors.size() >= K) {
-            System.out.println(divisors.get(K - 1));
-        } else {
-            System.out.println(0);
-        }
+        System.out.println(0);
     }
 }
