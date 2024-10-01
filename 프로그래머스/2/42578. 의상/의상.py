@@ -1,55 +1,16 @@
-# from collections import defaultdict
-# from itertools import combinations
-
-# def solution(clothes):
-#     answer = 0
-#     temp = 1
-    
-#     for i in clothes:
-#        i[0],i[1]=i[1],i[0]
-    
-#     myClothes=defaultdict(list)
-#     for k,v in clothes:
-#         myClothes[k].append(v)
-    
-#     myList=[]
-#     for i in myClothes:
-#         myList.append(len(myClothes[i]))
-    
-#     answer+=sum(myList)
-#     for i in range(2,len(myList)+1):
-#         for j in list(combinations(myList,i)):
-#             temp=1
-#             for k in j:
-#                 temp*=k
-#             answer+=temp
-    
-#     return answer
-
-from collections import defaultdict
-
 def solution(clothes):
-    answer = 0
-    temp = 1
-    
-    for i in clothes:
-       i[0],i[1]=i[1],i[0]
-    
-    myClothes=defaultdict(list)
-    for k,v in clothes:
-        myClothes[k].append(v)
-
-    print(myClothes)
-    for i in myClothes:
-        if(len(myClothes)==1):
-            answer=len(myClothes[i])
-            return answer;
+    clothes_dict = {}
+    for clothe in clothes:
+        if clothe[1] in clothes_dict:
+            clothes_dict[clothe[1]].add(clothe[0])
         else:
-            print(len(myClothes[i])+1)
-            temp*=len(myClothes[i])+1
+            clothes_dict[clothe[1]] = set([clothe[0]])
     
+    if len(clothes_dict) == 1: return len(clothes)
+
+    answer = 1
+    for key in clothes_dict.keys():
+        answer *= (len(clothes_dict[key]) + 1)
     
-    answer+=temp
-    answer-=1
-    
+    answer -= 1
     return answer
