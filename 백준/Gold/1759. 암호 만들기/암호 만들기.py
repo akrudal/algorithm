@@ -1,39 +1,30 @@
 모음 = {"a", "e", "i", "o", "u"}
 stack = []
 alphabets = []
-# 서로 다른 L개, 최소 1개의 모음과 최소 두 개의 자음
 
-def make_combinations(m, n, nindex):
-    length=len(stack)
-    
-    # print("current", nindex, stack, length, n)
-    
-    # 예외 조건: 배열의 인덱스를 넘을 경우는 제외
-    if nindex > m: return
-    # 종료 조건: C개 중 L만큼 뽑았을 때
-    if length == n:
-        # 모음이 1개라도 없을 경우는 제외
-        if (not (set(stack) & 모음) or (len(set(stack) - 모음) < 2)): 
-            return
-        
-        print("".join(stack))
+def make_combinations(L, C, start, vowel_count, consonant_count):
+    # 길이 L에 도달했을 때
+    if len(stack) == L:
+        # 최소 1개의 모음과, 최소 2개의 자음으로 이루어질 경우 정답 출력
+        if vowel_count >= 1 and consonant_count >= 2:
+            print("".join(stack))
         return
 
-    for i, a in enumerate(alphabets[min(nindex, m-1): ]):
-        stack.append(a)
-        make_combinations(m, n, nindex+1)
+    for i in range(start, C):
+        char = alphabets[i]
+        stack.append(char)
+        
+        if char in 모음:
+            make_combinations(L, C, i+1, vowel_count+1, consonant_count)
+        else:
+            make_combinations(L, C, i+1, vowel_count, consonant_count+1)
+        
         stack.pop()
-            
-        nindex += 1
-            
+
 def main():
-    global stack, alphabets
+    global alphabets
     L, C = map(int, input().split())
     alphabets = sorted(input().split())
-    
-    for i in range(C):
-        stack.append(alphabets[i])
-        make_combinations(C, L, i+1)
-        stack = []
-    
+    make_combinations(L, C, 0, 0, 0)
+
 main()
