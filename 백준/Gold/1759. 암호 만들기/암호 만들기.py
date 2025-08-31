@@ -1,30 +1,27 @@
-모음 = {"a", "e", "i", "o", "u"}
-stack = []
-alphabets = []
+import sys
 
-def make_combinations(L, C, start, vowel_count, consonant_count):
-    # 길이 L에 도달했을 때
-    if len(stack) == L:
-        # 최소 1개의 모음과, 최소 2개의 자음으로 이루어질 경우 정답 출력
-        if vowel_count >= 1 and consonant_count >= 2:
-            print("".join(stack))
+input = sys.stdin.readline
+
+l,c = map(int, input().split())
+alpha = sorted(list(map(str, input().split())))
+
+
+
+def backTracking(idx, temp, alpha):
+    if len(alpha) == l:
+        gather = 0
+        vowel = 0
+        for ss in alpha:
+            if ss in ["a", "e", "i", "o", "u"]:
+                gather += 1
+            else:
+                vowel += 1
+        if gather >= 1 and vowel >= 2:
+            print(alpha)
         return
+    
+    for i in range(idx, len(temp)):
+        backTracking(i + 1, temp, alpha + temp[i])
 
-    for i in range(start, C):
-        char = alphabets[i]
-        stack.append(char)
-        
-        if char in 모음:
-            make_combinations(L, C, i+1, vowel_count+1, consonant_count)
-        else:
-            make_combinations(L, C, i+1, vowel_count, consonant_count+1)
-        
-        stack.pop()
 
-def main():
-    global alphabets
-    L, C = map(int, input().split())
-    alphabets = sorted(input().split())
-    make_combinations(L, C, 0, 0, 0)
-
-main()
+backTracking(0, alpha, "")
